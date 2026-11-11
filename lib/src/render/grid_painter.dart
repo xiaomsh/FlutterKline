@@ -5,6 +5,7 @@ import '../controller.dart';
 import '../debug.dart';
 import '../model/min_max.dart';
 import 'context.dart';
+import 'slot_axis.dart';
 import 'time_ticks.dart';
 
 /// Background, grid and axis labels. Repaints when viewport / data / indicators change, not
@@ -91,7 +92,8 @@ class GridPainter extends CustomPainter {
     final plotW = ctx.chartRect.width;
     final plotL = ctx.chartRect.left;
     final offsetOf = _offsetFn(ctx);
-    final ticks = config.tieredTimeAxis && !ctx.isEmpty
+    final slotTicks = config.slotAxis?.ticks;
+    final ticks = slotTicks == null && config.tieredTimeAxis && !ctx.isEmpty
         ? pickTimeTicks(
             ctx.bars,
             ctx.start,
@@ -101,7 +103,13 @@ class GridPainter extends CustomPainter {
             offsetOf: offsetOf,
           )
         : null;
-    final gridXs = ticks == null
+    bool inside(double x) => x > plotL + 0.5 && x < plotL + plotW - 0.5;
+    final gridXs = slotTicks != null
+        ? [
+            for (final t in slotTicks)
+              if (!t.major && inside(ctx.xOf(t.slot))) ctx.xOf(t.slot),
+          ]
+        : ticks == null
         ? [for (var j = 1; j < columns; j++) plotL + plotW * j / columns]
         : [
             for (final (i, _) in ticks)
@@ -126,6 +134,16 @@ class GridPainter extends CustomPainter {
           _line,
         );
       }
+    }
+
+    // Day separators: solid and stronger than the grid.
+    for (final t in slotTicks ?? const <SlotTick>[]) {
+      final gx = ctx.xOf(t.slot);
+      if (!t.major || !inside(gx)) continue;
+      _line.color = theme.axisText.withAlpha(0x66);
+      _line.strokeWidth = 1;
+      final x = config.snap(gx);
+      canvas.drawLine(Offset(x, ctx.chartRect.top), Offset(x, ctx.chartRect.bottom), _line);
     }
 
     for (final panel in ctx.panels) {
@@ -179,7 +197,9 @@ class GridPainter extends CustomPainter {
     // nonexistent marks like 17:20), extrapolated by whole bars in the right padding. Labels
     // stay pinned to fixed grid lines rather than following bars; otherwise they'd jump back
     // every half bar while panning and jitter during fast scrolls.
-    if (ticks != null) {
+    if (slotTicks != null) {
+      _paintSlotLabels(canvas, ctx, slotTicks);
+    } else if (ticks != null) {
       _paintTieredLabels(canvas, ctx, ticks, offsetOf);
     } else if (!ctx.isEmpty) {
       final n = ctx.bars.length;
@@ -219,6 +239,9 @@ class GridPainter extends CustomPainter {
         );
         final value = panel.valueAtFraction(r / rows);
         final tp = pool.text(ctx.formatAxisValue(panel, value), theme.axisStyle);
+        final leftTp = config.percentRightOnly
+            ? pool.text(ctx.formatAxisValue(panel, value, left: true), theme.axisStyle)
+            : tp;
         final minTy = panel.rect.top + 2;
         final maxTy = panel.rect.bottom - tp.height - 2;
         // Panel shorter than the label: it won't fit and would spill into the adjacent panel.
@@ -234,7 +257,7 @@ class GridPainter extends CustomPainter {
           // With a secondary value axis: if both sides have axis strips it takes the left one,
           // otherwise it's labeled at the plot edge opposite the main axis.
           if (ctx.hasLeftAxis && (sec == null || !rightAxis)) {
-            tp.paint(canvas, Offset(ctx.leftAxisRect.right - tp.width - 4, ty));
+            leftTp.paint(canvas, Offset(ctx.leftAxisRect.right - leftTp.width - 4, ty));
           }
         } else if (ctx.axisInside) {
           tp.paint(canvas, Offset(panel.rect.right - tp.width - 4, ty));
@@ -270,6 +293,25 @@ class GridPainter extends CustomPainter {
     final a = device(bars[(ctx.start - 1).clamp(0, bars.length - 1)].time);
     final b = device(bars[ctx.end.clamp(0, bars.length - 1)].time);
     return a == b ? (_) => a : device;
+  }
+
+  /// Fixed-slot labels: major ticks claim space first; labels are clamped into the plot area and
+  /// skipped when they would overlap one already drawn.
+  void _paintSlotLabels(Canvas canvas, RenderContext ctx, List<SlotTick> ticks) {
+    final theme = config.theme.value;
+    final plotL = ctx.chartRect.left, plotR = ctx.chartRect.right;
+    final y = ctx.timeAxisRect.top;
+    final order = [...ticks.where((t) => t.major), ...ticks.where((t) => !t.major)];
+    final taken = <(double, double)>[];
+    for (final t in order) {
+      if (t.label.isEmpty) continue;
+      final tp = controller.pool.text(t.label, theme.axisStyle);
+      final left = clampSafe(ctx.xOf(t.slot) - tp.width / 2, plotL, plotR - tp.width);
+      final right = left + tp.width;
+      if (taken.any((r) => left < r.$2 + 4 && right > r.$1 - 4)) continue;
+      taken.add((left, right));
+      tp.paint(canvas, Offset(left, y + (ctx.timeAxisRect.height - tp.height) / 2));
+    }
   }
 
   /// Tiered tick text: regular weight when only one tier is present; with mixed tiers, the

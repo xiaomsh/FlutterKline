@@ -10,6 +10,7 @@ enum SampleCategory {
   interaction,
   appearance,
   extensions,
+  stocks,
   pro,
   storage;
 
@@ -21,6 +22,7 @@ enum SampleCategory {
     interaction => S.current.sampleCategoryInteraction,
     appearance => S.current.sampleCategoryAppearance,
     extensions => S.current.sampleCategoryExtensions,
+    stocks => S.current.sampleCategoryStocks,
     pro => S.current.sampleCategoryPro,
     storage => S.current.sampleCategoryStorage,
   };

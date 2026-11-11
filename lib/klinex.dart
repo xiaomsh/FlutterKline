@@ -1,4 +1,5 @@
-/// klinex: a lightweight, fast, plugin-based K-line chart with zero third-party dependencies.
+/// klinex: a lightweight, fast, extensible K-line chart written from scratch, with zero
+/// third-party dependencies.
 /// Entry points are [ChartController] (data source) + [KChart] (widget); extend with [Indicator],
 /// [OverlayPlugin], and [MainSeries].
 library;
@@ -57,11 +58,19 @@ export 'src/render/context.dart'
         defaultCompactFormat;
 export 'src/render/main_series.dart';
 export 'src/render/paint_pool.dart';
+export 'src/render/range_adjust.dart';
 export 'src/render/series/area_series.dart';
 export 'src/render/series/candle_series.dart';
 export 'src/render/series/line_series.dart';
 export 'src/render/series_paint_kit.dart';
+export 'src/render/slot_axis.dart';
 export 'src/render/time_ticks.dart' show TimeTier, defaultTickLabel, pickTimeTicks;
+export 'src/stock/average_price.dart';
+export 'src/stock/intraday_axis.dart';
+export 'src/stock/price_levels.dart';
+export 'src/stock/price_limit.dart';
+export 'src/stock/stock_range.dart';
+export 'src/stock/trading_session.dart';
 export 'src/theme/theme.dart';
 export 'src/widget/depth_chart.dart';
 export 'src/widget/kchart.dart';

@@ -33,11 +33,13 @@ abstract class BarAggregator {
   static Bar merge(List<Bar> bars, int from, int to, int time) {
     final first = bars[from];
     var hi = first.high, lo = first.low, vol = first.vol;
+    var amount = first.amount;
     for (var k = from + 1; k < to; k++) {
       final b = bars[k];
       hi = math.max(hi, b.high);
       lo = math.min(lo, b.low);
       vol += b.vol;
+      amount = addAmount(amount, b.amount);
     }
     return Bar(
       time: time,
@@ -46,6 +48,7 @@ abstract class BarAggregator {
       low: lo,
       close: bars[to - 1].close,
       vol: vol,
+      amount: amount,
     );
   }
 }

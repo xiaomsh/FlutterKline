@@ -1,5 +1,6 @@
 import '../../l10n/l10n.dart';
 import '../../pro/live_pro.dart';
+import '../../pro/stock_pro.dart';
 import 'sample/sample_entry.dart';
 import 'samples/appearance/format_sample.dart';
 import 'samples/appearance/grid_sample.dart';
@@ -26,12 +27,14 @@ import 'samples/interaction/keyboard_sample.dart';
 import 'samples/main/candle_style_sample.dart';
 import 'samples/main/price_line_sample.dart';
 import 'samples/main/series_sample.dart';
+import 'samples/stocks/intraday_sample.dart';
+import 'samples/stocks/stock_daily_sample.dart';
 import 'samples/storage/storage_sample.dart';
 
 /// All catalog entries: free samples + full-version samples (locked placeholders in the free
 /// version), ordered by category.
 List<SampleEntry> allSamples() {
-  final all = [...coreSamples(), ...LivePro.settingSamples()];
+  final all = [...coreSamples(), ...LivePro.settingSamples(), ...StockPro.settingSamples()];
   return [
     for (final category in SampleCategory.values) ...all.where((e) => e.category == category),
   ];
@@ -239,6 +242,22 @@ List<SampleEntry> coreSamples() => [
     description: () => S.current.sampleDepthDesc,
     keywords: const ['DepthChart', 'DepthLevel'],
     builder: () => const DepthSample(),
+  ),
+  SampleEntry(
+    id: 'intraday',
+    category: SampleCategory.stocks,
+    title: () => S.current.sampleIntradayTitle,
+    description: () => S.current.sampleIntradayDesc,
+    keywords: const ['TradingSession', 'IntradayAxis', 'slotAxis', 'AveragePrice', 'percentBase'],
+    builder: () => const IntradaySample(),
+  ),
+  SampleEntry(
+    id: 'stock-daily',
+    category: SampleCategory.stocks,
+    title: () => S.current.sampleStockDailyTitle,
+    description: () => S.current.sampleStockDailyDesc,
+    keywords: const ['LimitMarksOverlay', 'PriceLimit', 'swapUpDown'],
+    builder: () => const StockDailySample(),
   ),
   SampleEntry(
     id: 'storage',

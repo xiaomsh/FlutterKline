@@ -87,6 +87,26 @@ class ChartViewport extends ChangeNotifier {
   /// realtime appends never move the x axis.
   bool _pinnedToLatest = true;
 
+  int? _fixedSlots;
+
+  /// Fixed slot count (intraday charts): the width is split into exactly this many slots, bar `i`
+  /// sits in slot `i`, and scrolling / zooming become no-ops. Slots past the data stay empty.
+  /// null (default) restores the free viewport at the latest bar.
+  int? get fixedSlots => _fixedSlots;
+
+  set fixedSlots(int? value) {
+    assert(value == null || value > 0, 'fixedSlots must be positive');
+    if (value == _fixedSlots) return;
+    _fixedSlots = value;
+    if (value == null) {
+      _barWidth = clampSafe(_barWidth, minBarWidth, maxBarWidth);
+      _rightIndex = math.max(0, _barCount - 1) + _initialBlankBars;
+      _pinnedToLatest = true;
+    }
+    _clamp();
+    _notify();
+  }
+
   double get barWidth => _barWidth;
 
   double get rightIndex => _rightIndex;
@@ -325,6 +345,12 @@ class ChartViewport extends ChangeNotifier {
   }
 
   void _clamp() {
+    final slots = _fixedSlots;
+    if (slots != null) {
+      if (_width > 0) _barWidth = _width / slots;
+      _rightIndex = slots - 0.5;
+      return;
+    }
     final b = _bounds();
     _rightIndex = _rightIndex.clamp(b.$1, b.$2);
   }

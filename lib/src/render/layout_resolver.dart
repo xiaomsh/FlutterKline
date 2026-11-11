@@ -199,6 +199,10 @@ class LayoutResolver {
               : (mm.min == 0 ? mm.padded(0.08, 0) : mm.padded(0.08)));
       // Sub-panel legends draw at the panel top; without padding, indicator lines overlap the
       // text.
+      final adjust = config.mainRange;
+      if (isMain && locked == null && adjust != null && end >= start) {
+        panelRange = adjust.apply(panelRange);
+      }
       final subLegend = isMain ? null : _legend;
       if (subLegend != null) {
         panelRange = panelRange.paddedPx(h, subLegend.subPanelReserve, 0);

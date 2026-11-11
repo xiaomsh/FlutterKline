@@ -149,23 +149,30 @@ class RenderContext {
     return config.subValueFormatter;
   }
 
-  /// Base for percentage scale: close of the bar at the screen's left edge. Can't use [start],
-  /// which extends one extra bar left (so lines connect across the edge)
+  /// Base for percentage scale: [ChartConfig.percentBase] if set, otherwise the close of the bar at
+  /// the screen's left edge. Can't use [start], which extends one extra bar left (so lines connect
+  /// across the edge)
   late final double _percentBase = () {
+    final fixed = config.percentBase;
+    if (fixed != null) return fixed;
     if (isEmpty) return double.nan;
     final i = indexAt(chartRect.left).ceil().clamp(start, end);
     return bars[i].close;
   }();
 
   /// For ticks and crosshair: shows percent change on the main chart when percentage scale is on;
-  /// legend and tooltip still use [formatValue] (absolute price)
-  String formatAxisValue(PanelLayout p, double v) {
-    if (!v.isFinite) return formatValue(p, v);
+  /// legend and tooltip still use [formatValue] (absolute price). [left] marks labels in the left
+  /// tick strip, which keep prices under [ChartConfig.percentRightOnly]
+  String formatAxisValue(PanelLayout p, double v, {bool left = false}) {
+    if (!v.isFinite || (left && config.percentRightOnly)) return formatValue(p, v);
     final key = _PanelValueKey(p.id, v);
     final hit = _axisFormatCache[key];
     if (hit != null) return hit;
     String text;
-    if (p.isMain && !p.isSecondary && config.percentScale && !isEmpty) {
+    if (p.isMain &&
+        !p.isSecondary &&
+        config.percentScale &&
+        (!isEmpty || config.percentBase != null)) {
       final base = _percentBase;
       if (base > 0) {
         final pct = (v / base - 1) * 100;

@@ -31,6 +31,11 @@ class HomePage extends StatelessWidget {
               onPressed: () => Get.toNamed('/live'),
               child: Text(S.current.homeLive),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => Get.toNamed('/stock'),
+              child: Text(S.current.homeStocks),
+            ),
           ],
         ),
       ),

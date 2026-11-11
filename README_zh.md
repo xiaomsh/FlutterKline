@@ -13,7 +13,7 @@
 
 ```yaml
 dependencies:
-  klinex: ^0.0.1
+  klinex: ^0.1.0
 ```
 
 ## 快速上手
@@ -113,6 +113,34 @@ class DotSeries extends MainSeries {
 
 K线（实心 / 涨空心 / 跌空心）/ 线形 / 面积
 
+## 股票（A股 / 港股 / 美股）
+
+```dart
+final session = TradingSession.cnA; // 另有 .hk、.us（自动处理夏令时）
+controller
+  ..indicators.setAll([AveragePrice(session: session, volumeUnit: 100), Vol()])
+  ..setBars(session.normalize(minuteBars, preClose: preClose));
+
+KChart(
+  controller: controller,
+  theme: KLineTheme.light().swapUpDown(), // 红涨绿跌
+  seriesStyle: MainSeriesStyle.area,
+  slotAxis: IntradayAxis(session), // 241 个固定分钟槽位，午休不留空
+  percentScale: true,
+  percentBase: preClose, // 相对昨收的涨跌幅
+  percentRightOnly: true, // 左侧价格、右侧涨跌幅
+  yAxisPosition: YAxisPosition.both,
+  mainRange: StockRange(symmetricAround: preClose), // 昨收始终居中
+)
+```
+
+- **交易时段**：`TradingSession` 内置 A股（241 个槽位）、港股（331）、美股（391，自动处理夏令时）；`normalize` 把分钟线对齐到槽位、补齐无成交的分钟、丢弃盘外数据；`isTrading` / `formatTime` 按交易所时间计算
+- **分时横轴**：`slotAxis` 把横轴固定为交易时段的分钟数（不滚动不缩放，最新一分钟之后留空），刻度在开盘、整点、午休（`11:30/13:00`）和收盘；其他布局可自行实现 `SlotAxis`
+- **均价线**：`AveragePrice` = 开盘以来 Σ成交额 / Σ成交量（有 `Bar.amount` 时优先使用），每个交易日重新累计；`volumeUnit` 把“手”换算成股
+- **价格线与涨跌停**：`PriceLevelsOverlay` 画昨收线和涨跌停线；`PriceLimit` 按交易所规则四舍五入计算涨跌停价（±10% / ±20% / ±5% / ±30%）；`LimitMarksOverlay` 在日K上标出收盘恰好在涨跌停价的K线（新股上市首日等不设涨跌幅的日子不标）；`StockRange(include: [...])` 把指定价格撑进区间
+- **配色**：`KLineTheme.swapUpDown()` 切换为红涨绿跌
+- 横轴按K线序号排列，休市日和午休在任何周期下都不占位
+
 ## 性能门槛（perf_test 回归守卫）
 
 | 场景 | 实测 |
@@ -210,7 +238,7 @@ final restored = KLineTheme.fromJson(themeJson);
 | 深度图 | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ |
 | 回放 / 多图联动 | — / ✅ ✅ | ❌ | ❌ / 只同步十字线 | ❌ | ✅ ❌ | ❌ |
 | 整体状态存取 | ✅ | ✅ | 只有画线 | ❌ | 只有画线 | ❌ |
-| 测试用例 | 286 / 516 | 约 1500 | 约 220 | 12 | 约 51 | 0 |
+| 测试用例 | 306 / 546 | 约 1500 | 约 220 | 12 | 约 51 | 0 |
 
 ## 完整版
 
@@ -226,6 +254,8 @@ final restored = KLineTheme.fromJson(themeJson);
 - **对比叠加**：别的品种按涨跌幅换算叠到主图上，或按原始价格挂到主图第二条值轴（`CompareAxis.secondary`）
 - **K 线回放**：逐根回放，播放 / 暂停 / 单步 / 按根或日期跳转 / 倍速，末根可按 开→低→高→收 逐跳长出，未来区域压暗
 - **多图联动**：按时间同步视口和十字线
+- **五日分时**：`MultiDayAxis` 把多个交易日排在固定槽位上，日间以日期分隔，均价每日重新累计
+- **复权**：`PriceAdjuster` 按分红、送转、配股（`ExRights`）对日K做前复权 / 后复权
 
 完整版通过 `package:klinex/pro.dart` 引入，启动时调一次 `KlinexPro.install()`。
 完整版里的文字同样默认英文，例如 Ichimoku 图例用 `Ichimoku(labels: IchimokuLabels(tenkan: '转换', ...))` 换成其它语言。

@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 
 import '../theme/theme.dart';
 import 'main_series.dart';
+import 'range_adjust.dart';
+import 'slot_axis.dart';
 import 'time_ticks.dart';
 
 /// Built-in main series styles (three in the free edition); other styles pass a [MainSeries]
@@ -93,6 +95,10 @@ class ChartConfig {
     this.utcOffset,
     this.tickFormatter,
     this.tickMinSpacing = 64,
+    this.percentBase,
+    this.percentRightOnly = false,
+    this.mainRange,
+    this.slotAxis,
   }) : theme = ValueNotifier(theme),
        series = series ?? MainSeries.fromStyle(seriesStyle);
 
@@ -125,6 +131,25 @@ class ChartConfig {
   /// Main chart percentage scale: labels show change relative to the first visible close. Display
   /// only, y mapping unchanged; call [bumpLayout] after changing
   bool percentScale;
+
+  /// Fixed base for [percentScale] labels (e.g. the previous close of a stock); null uses the
+  /// close of the first visible bar. Call [bumpLayout] after changing
+  double? percentBase;
+
+  /// With [percentScale], only the right side shows percent; the left tick strip
+  /// ([YAxisPosition.left] / [YAxisPosition.both]) keeps prices. Call [bumpLayout] after changing
+  bool percentRightOnly;
+
+  /// Adjusts the main range after data, indicators and padding are merged; the result is the
+  /// final range before manual y zoom / pan (e.g. keep it symmetric around the previous close, or
+  /// include limit prices). Not applied while the range is locked. Call [bumpLayout] after
+  /// changing
+  RangeAdjust? mainRange;
+
+  /// Fixed-slot time axis (intraday): the viewport is split into [SlotAxis.slotCount] slots and
+  /// vertical grid lines / time labels come from [SlotAxis.ticks]. Call [bumpLayout] after
+  /// changing
+  SlotAxis? slotAxis;
 
   /// Spike clamping: high/low may exceed the visible close range by at most span * this factor
   /// (0.5~2 recommended); null disables

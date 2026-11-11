@@ -13,7 +13,7 @@ Live demo: <https://xiaomsh.github.io/FlutterKline/>. The demo app lives in [exa
 
 ```yaml
 dependencies:
-  klinex: ^0.0.1
+  klinex: ^0.1.0
 ```
 
 ## Quick start
@@ -112,6 +112,34 @@ line break and other charts that change the data itself are data transforms in t
 ## Built-in main series
 
 Candles (solid / hollow up / hollow down) / line / area
+
+## Stocks (A-share / Hong Kong / US)
+
+```dart
+final session = TradingSession.cnA; // also .hk and .us (DST aware)
+controller
+  ..indicators.setAll([AveragePrice(session: session, volumeUnit: 100), Vol()])
+  ..setBars(session.normalize(minuteBars, preClose: preClose));
+
+KChart(
+  controller: controller,
+  theme: KLineTheme.light().swapUpDown(), // red up, green down
+  seriesStyle: MainSeriesStyle.area,
+  slotAxis: IntradayAxis(session), // 241 fixed minute slots, lunch break without a gap
+  percentScale: true,
+  percentBase: preClose, // change against the previous close
+  percentRightOnly: true, // prices on the left, percent on the right
+  yAxisPosition: YAxisPosition.both,
+  mainRange: StockRange(symmetricAround: preClose), // previous close stays in the middle
+)
+```
+
+- **Trading sessions**: `TradingSession` presets for A-share (241 slots), Hong Kong (331) and US (391, DST aware); `normalize` aligns minute bars to the slots, fills minutes without trades and drops points outside the session; `isTrading` / `formatTime` work in exchange time
+- **Intraday axis**: `slotAxis` fixes the x axis to the session's minutes (no scrolling or zooming, slots after the latest minute stay empty) with ticks at the open, every hour, the lunch break (`11:30/13:00`) and the close; implement `SlotAxis` for other layouts
+- **Average price**: `AveragePrice` = Σamount / Σvolume since the open (uses `Bar.amount` when present), reset every trading day; `volumeUnit` converts lots to shares
+- **Price lines and limits**: `PriceLevelsOverlay` draws the previous close and limit lines; `PriceLimit` computes limit prices with exchange rounding (±10% / ±20% / ±5% / ±30%); `LimitMarksOverlay` marks daily bars closing exactly at the limit price (days without limits, such as IPO days, are not marked); `StockRange(include: [...])` stretches the range to fit given prices
+- **Colors**: `KLineTheme.swapUpDown()` switches to red up / green down
+- Days off and breaks take no space anywhere, since the x axis is indexed by bar
 
 ## Performance gates (perf_test regression guard)
 
@@ -214,7 +242,7 @@ From reading the source code (2026-11), not the libraries' own READMEs. Where kl
 | Depth chart | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ |
 | Replay / linked charts | — / ✅ ✅ | ❌ | ❌ / crosshair only | ❌ | ✅ ❌ | ❌ |
 | Save / restore whole state | ✅ | ✅ | drawings only | ❌ | drawings only | ❌ |
-| Tests | 286 / 516 | ~1500 | ~220 | 12 | ~51 | 0 |
+| Tests | 306 / 546 | ~1500 | ~220 | 12 | ~51 | 0 |
 
 ## Full edition
 
@@ -230,6 +258,8 @@ The full edition adds the following, with exactly the same performance as the fr
 - **Comparison overlay**: other symbols scaled to percent change on the main chart, or in raw prices on the main chart's secondary axis (`CompareAxis.secondary`)
 - **Bar replay**: bar-by-bar replay with play / pause / step / jump to bar or date / speed; the last bar can grow tick by tick (open → low → high → close), and the future is dimmed
 - **Linked charts**: viewports and crosshairs synced by time
+- **Five-day intraday**: `MultiDayAxis` lays several trading days on fixed slots with dated separators; the average price restarts every day
+- **Price adjustment**: `PriceAdjuster` applies dividends, bonus shares and rights issues (`ExRights`) to daily bars, forward or backward
 
 Import the full edition with `package:klinex/pro.dart` and call `KlinexPro.install()` once at startup.
 Its texts default to English as well; for example, Ichimoku legend labels can be replaced with

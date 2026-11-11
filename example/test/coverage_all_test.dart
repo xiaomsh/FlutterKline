@@ -4,6 +4,7 @@
 
 import 'package:klinex_example/api/api_base.dart';
 import 'package:klinex_example/api/binance_spot_api.dart';
+import 'package:klinex_example/api/eastmoney_api.dart';
 import 'package:klinex_example/http/header_interceptor.dart';
 import 'package:klinex_example/http/http_request.dart';
 import 'package:klinex_example/l10n/l10n.dart';
@@ -25,6 +26,7 @@ import 'package:klinex_example/page/setting/sample/sample_entry.dart';
 import 'package:klinex_example/page/setting/sample/sample_feed.dart';
 import 'package:klinex_example/page/setting/sample/sample_layout.dart';
 import 'package:klinex_example/page/setting/sample/sample_view.dart';
+import 'package:klinex_example/page/setting/sample/stock_sample_data.dart';
 import 'package:klinex_example/page/setting/samples/appearance/format_sample.dart';
 import 'package:klinex_example/page/setting/samples/appearance/grid_sample.dart';
 import 'package:klinex_example/page/setting/samples/appearance/theme_sample.dart';
@@ -50,13 +52,19 @@ import 'package:klinex_example/page/setting/samples/interaction/keyboard_sample.
 import 'package:klinex_example/page/setting/samples/main/candle_style_sample.dart';
 import 'package:klinex_example/page/setting/samples/main/price_line_sample.dart';
 import 'package:klinex_example/page/setting/samples/main/series_sample.dart';
+import 'package:klinex_example/page/setting/samples/stocks/intraday_sample.dart';
+import 'package:klinex_example/page/setting/samples/stocks/stock_daily_sample.dart';
 import 'package:klinex_example/page/setting/samples/storage/storage_sample.dart';
 import 'package:klinex_example/page/setting/setting_menu.dart';
 import 'package:klinex_example/page/setting/setting_page.dart';
 import 'package:klinex_example/page/setting/widgets/controls.dart';
 import 'package:klinex_example/page/setting/widgets/indicator_fields.dart';
 import 'package:klinex_example/page/setting/widgets/parameter_input.dart';
+import 'package:klinex_example/page/stock/stock_controller.dart';
+import 'package:klinex_example/page/stock/stock_page.dart';
+import 'package:klinex_example/page/stock/stock_symbols.dart';
 import 'package:klinex_example/pro/live_pro.dart';
+import 'package:klinex_example/pro/stock_pro.dart';
 import 'package:klinex_example/route.dart';
 import 'package:klinex_example/socket/binance_public_ws.dart';
 import 'package:klinex_example/theme/theme_style.dart';

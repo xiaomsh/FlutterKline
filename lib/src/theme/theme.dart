@@ -148,6 +148,38 @@ class KLineTheme {
     );
   }
 
+  /// Swaps up and down colors (wicks and borders too): turns the default green-up theme into the
+  /// red-up / green-down convention of China, Hong Kong, Japan and Korea, and back
+  KLineTheme swapUpDown() => KLineTheme(
+    background: background,
+    gridLine: gridLine,
+    panelSeparator: panelSeparator,
+    up: down,
+    down: up,
+    axisText: axisText,
+    axisTextSize: axisTextSize,
+    crosshair: crosshair,
+    crosshairLabelBg: crosshairLabelBg,
+    crosshairLabelText: crosshairLabelText,
+    priceLine: priceLine,
+    priceLabelBg: priceLabelBg,
+    priceLabelText: priceLabelText,
+    tooltipBg: tooltipBg,
+    tooltipText: tooltipText,
+    tooltipBorder: tooltipBorder,
+    palette: palette,
+    seriesLine: seriesLine,
+    gridLineWidth: gridLineWidth,
+    gridLineDash: gridLineDash,
+    crosshairDash: crosshairDash,
+    showGrid: showGrid,
+    upWick: downWick,
+    downWick: upWick,
+    upBorder: downBorder,
+    downBorder: upBorder,
+    highLowText: highLowText,
+  );
+
   /// Saves as JSON (colors as ARGB ints); the host decides where to store it
   Map<String, dynamic> toJson() => {
     'background': background.toARGB32(),

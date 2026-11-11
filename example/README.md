@@ -11,7 +11,7 @@ Live demo: <https://xiaomsh.github.io/FlutterKline/>
 | Path | Contents |
 |------|------|
 | `../` | The chart library; see its [README.md](../README.md) |
-| `lib/` | The demo app: samples and live market |
+| `lib/` | The demo app: samples, live market and stock market |
 
 ## Samples
 
@@ -19,7 +19,8 @@ The UI is in English by default; switch between English and Chinese at the top r
 page (it does not follow the system language).
 
 "Samples" on the home page uses deterministic offline data and needs no exchange network; "Live
-market" shows real-time Binance data. Light by default; switch to dark at the top right. On wide
+market" shows real-time Binance data and "Stock market" A-share / Hong Kong / US quotes from
+Eastmoney (intraday and daily / weekly / monthly bars). Light by default; switch to dark at the top right. On wide
 screens the menu is on the left, the chart in the middle and the settings on the right; on narrow
 screens the chart is on top, the settings below and the menu in a drawer.
 
@@ -27,8 +28,8 @@ Each feature is a standalone sample (`lib/page/setting/samples/`) with its own c
 settings panel and equivalent code, sharing no state; switching or "Reset this page" rebuilds it.
 Samples share the layout, data source and controls under `sample/`. Every page has its own URL,
 e.g. [crosshair](https://xiaomsh.github.io/FlutterKline/#/setting/crosshair). Categories are data,
-main series, coordinates, indicators, interaction, appearance, extensions, full edition and
-storage, searchable by name or API. Full edition features show locked entries in the free demo.
+main series, coordinates, indicators, interaction, appearance, extensions, stocks, full edition
+and storage, searchable by name or API. Full edition features show locked entries in the free demo.
 The storage page saves indicators, zoom and theme, not the bars, and does not write to disk.
 
 ### Minimal integration
@@ -146,6 +147,13 @@ Binance public market data is not an open data service, and Binance Global may b
 some countries, regions or networks; in the US and elsewhere, adapt the feed to a locally
 available service. The integration is in `lib/api/binance_spot_api.dart`,
 `lib/socket/binance_public_ws.dart` and `lib/widget/binance_live_feed.dart`.
+
+The stock page uses Eastmoney's public quote endpoints (`push2his.eastmoney.com`, no key needed;
+quotes may be delayed and are for demonstration only). Symbols are Eastmoney ids such as
+`1.600519` (Shanghai), `0.300750` (Shenzhen), `116.00700` (Hong Kong) and `105.AAPL` (US); the
+page polls every 5 seconds during trading hours, pauses in the background and reloads on
+resume. See `lib/api/eastmoney_api.dart` and
+`lib/page/stock/`.
 
 ## Running the demo
 

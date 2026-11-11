@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0
+
+### Stocks
+
+- `TradingSession` with A-share, Hong Kong and US presets (lunch breaks, US daylight saving,
+  exchange time zone); `normalize` aligns minute bars to session slots
+- Intraday chart: `KChart.slotAxis` with `IntradayAxis` (fixed minute slots, empty future slots,
+  session ticks), `AveragePrice` indicator, optional `Bar.amount`
+- `KChart.percentBase` (fixed base such as the previous close), `percentRightOnly` (prices left,
+  percent right) and `mainRange` (a `RangeAdjust` such as `StockRange` adjusting the final main
+  range)
+- `PriceLevelsOverlay`, `PriceLimit` and `LimitMarksOverlay` for previous-close and limit lines
+- `KLineTheme.swapUpDown()` for the red-up / green-down convention
+- `ChartViewport.fixedSlots`
+- Full edition: `MultiDayAxis` for five-day intraday charts, `PriceAdjuster` / `ExRights` for
+  forward and backward price adjustment
+
 ## 0.0.1
 
 First release.

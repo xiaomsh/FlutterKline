@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -29,9 +28,7 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -3640,6 +3637,371 @@ class S {
     return Intl.message(
       'Switch to dark theme',
       name: 'themeSwitchToDark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock market`
+  String get homeStocks {
+    return Intl.message('Stock market', name: 'homeStocks', desc: '', args: []);
+  }
+
+  /// `Stocks`
+  String get stockTitle {
+    return Intl.message('Stocks', name: 'stockTitle', desc: '', args: []);
+  }
+
+  /// `A-share`
+  String get stockMarketA {
+    return Intl.message('A-share', name: 'stockMarketA', desc: '', args: []);
+  }
+
+  /// `HK`
+  String get stockMarketHk {
+    return Intl.message('HK', name: 'stockMarketHk', desc: '', args: []);
+  }
+
+  /// `US`
+  String get stockMarketUs {
+    return Intl.message('US', name: 'stockMarketUs', desc: '', args: []);
+  }
+
+  /// `Intraday`
+  String get stockPeriodIntraday {
+    return Intl.message(
+      'Intraday',
+      name: 'stockPeriodIntraday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5 days`
+  String get stockPeriodFiveDay {
+    return Intl.message(
+      '5 days',
+      name: 'stockPeriodFiveDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily`
+  String get stockPeriodDay {
+    return Intl.message('Daily', name: 'stockPeriodDay', desc: '', args: []);
+  }
+
+  /// `Weekly`
+  String get stockPeriodWeek {
+    return Intl.message('Weekly', name: 'stockPeriodWeek', desc: '', args: []);
+  }
+
+  /// `Monthly`
+  String get stockPeriodMonth {
+    return Intl.message(
+      'Monthly',
+      name: 'stockPeriodMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unadjusted`
+  String get stockAdjustNone {
+    return Intl.message(
+      'Unadjusted',
+      name: 'stockAdjustNone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forward adj.`
+  String get stockAdjustForward {
+    return Intl.message(
+      'Forward adj.',
+      name: 'stockAdjustForward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backward adj.`
+  String get stockAdjustBackward {
+    return Intl.message(
+      'Backward adj.',
+      name: 'stockAdjustBackward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Avg`
+  String get stockAverage {
+    return Intl.message('Avg', name: 'stockAverage', desc: '', args: []);
+  }
+
+  /// `Prev close`
+  String get stockPrevClose {
+    return Intl.message(
+      'Prev close',
+      name: 'stockPrevClose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limit up`
+  String get stockLimitUp {
+    return Intl.message('Limit up', name: 'stockLimitUp', desc: '', args: []);
+  }
+
+  /// `Limit down`
+  String get stockLimitDown {
+    return Intl.message(
+      'Limit down',
+      name: 'stockLimitDown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LU`
+  String get stockLimitUpShort {
+    return Intl.message('LU', name: 'stockLimitUpShort', desc: '', args: []);
+  }
+
+  /// `LD`
+  String get stockLimitDownShort {
+    return Intl.message('LD', name: 'stockLimitDownShort', desc: '', args: []);
+  }
+
+  /// `Trading`
+  String get stockTrading {
+    return Intl.message('Trading', name: 'stockTrading', desc: '', args: []);
+  }
+
+  /// `Closed`
+  String get stockClosed {
+    return Intl.message('Closed', name: 'stockClosed', desc: '', args: []);
+  }
+
+  /// `Red up, green down`
+  String get stockRedUp {
+    return Intl.message(
+      'Red up, green down',
+      name: 'stockRedUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data: Eastmoney, delayed quotes, for demo only`
+  String get stockDataSource {
+    return Intl.message(
+      'Data: Eastmoney, delayed quotes, for demo only',
+      name: 'stockDataSource',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stocks`
+  String get sampleCategoryStocks {
+    return Intl.message(
+      'Stocks',
+      name: 'sampleCategoryStocks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Intraday chart`
+  String get sampleIntradayTitle {
+    return Intl.message(
+      'Intraday chart',
+      name: 'sampleIntradayTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `One trading day in fixed minute slots: lunch break without gaps, average price line, previous-close baseline with percent on the right, limit lines.`
+  String get sampleIntradayDesc {
+    return Intl.message(
+      'One trading day in fixed minute slots: lunch break without gaps, average price line, previous-close baseline with percent on the right, limit lines.',
+      name: 'sampleIntradayDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Market`
+  String get intradayMarket {
+    return Intl.message('Market', name: 'intradayMarket', desc: '', args: []);
+  }
+
+  /// `Average price line`
+  String get intradayAverage {
+    return Intl.message(
+      'Average price line',
+      name: 'intradayAverage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Percent on the right axis`
+  String get intradayPercent {
+    return Intl.message(
+      'Percent on the right axis',
+      name: 'intradayPercent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limit up / down lines`
+  String get intradayLimits {
+    return Intl.message(
+      'Limit up / down lines',
+      name: 'intradayLimits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Simulate live minutes`
+  String get intradayLive {
+    return Intl.message(
+      'Simulate live minutes',
+      name: 'intradayLive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `slotAxis fixes the x axis to the session's minutes, so the chart does not scroll or zoom; slots after the latest minute stay empty.`
+  String get intradayHint {
+    return Intl.message(
+      'slotAxis fixes the x axis to the session\'s minutes, so the chart does not scroll or zoom; slots after the latest minute stay empty.',
+      name: 'intradayHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `mainRange keeps the range symmetric around the previous close and stretches it to include the limit prices.`
+  String get intradayRangeHint {
+    return Intl.message(
+      'mainRange keeps the range symmetric around the previous close and stretches it to include the limit prices.',
+      name: 'intradayRangeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily bars and limits`
+  String get sampleStockDailyTitle {
+    return Intl.message(
+      'Daily bars and limits',
+      name: 'sampleStockDailyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily bars over trading days only (weekends take no space), limit up / down marks and the red-up color convention.`
+  String get sampleStockDailyDesc {
+    return Intl.message(
+      'Daily bars over trading days only (weekends take no space), limit up / down marks and the red-up color convention.',
+      name: 'sampleStockDailyDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limit ratio`
+  String get stockLimitBoard {
+    return Intl.message(
+      'Limit ratio',
+      name: 'stockLimitBoard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main board ±10%`
+  String get stockBoardMain {
+    return Intl.message(
+      'Main board ±10%',
+      name: 'stockBoardMain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ChiNext / STAR ±20%`
+  String get stockBoardGrowth {
+    return Intl.message(
+      'ChiNext / STAR ±20%',
+      name: 'stockBoardGrowth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ST ±5%`
+  String get stockBoardSt {
+    return Intl.message('ST ±5%', name: 'stockBoardSt', desc: '', args: []);
+  }
+
+  /// `Limit marks`
+  String get stockLimitMarks {
+    return Intl.message(
+      'Limit marks',
+      name: 'stockLimitMarks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LimitMarksOverlay compares each close with the previous close; PriceLimit rounds half up to the cent like the exchange.`
+  String get stockDailyHint {
+    return Intl.message(
+      'LimitMarksOverlay compares each close with the previous close; PriceLimit rounds half up to the cent like the exchange.',
+      name: 'stockDailyHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Five-day intraday`
+  String get proSampleFiveDay {
+    return Intl.message(
+      'Five-day intraday',
+      name: 'proSampleFiveDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price adjustment`
+  String get proSampleAdjust {
+    return Intl.message(
+      'Price adjustment',
+      name: 'proSampleAdjust',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fit limits in range`
+  String get intradayLimitsInRange {
+    return Intl.message(
+      'Fit limits in range',
+      name: 'intradayLimitsInRange',
       desc: '',
       args: [],
     );

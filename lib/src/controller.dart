@@ -211,7 +211,7 @@ class ChartController {
   int? _tailHeadKey;
 
   static Bar _fold(Bar? head, Bar b, int time) => head == null
-      ? Bar(time: time, open: b.open, high: b.high, low: b.low, close: b.close, vol: b.vol)
+      ? b.copyWith(time: time)
       : Bar(
           time: time,
           open: head.open,
@@ -219,6 +219,7 @@ class ChartController {
           low: math.min(head.low, b.low),
           close: b.close,
           vol: head.vol + b.vol,
+          amount: addAmount(head.amount, b.amount),
         );
 
   /// One source bar arrives: update source data, then write the affected bucket back to the output.
@@ -285,7 +286,8 @@ class ChartController {
           head.high != cur.high ||
           head.low != cur.low ||
           head.close != cur.close ||
-          head.vol != cur.vol) {
+          head.vol != cur.vol ||
+          head.amount != cur.amount) {
         replaced = data.replaceAt(0, head);
       }
     }

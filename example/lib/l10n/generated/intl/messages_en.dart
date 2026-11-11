@@ -24,20 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(index, close) => "Bar ${index} · close ${close}";
 
-  static String m2(count) =>
-      "${count} bars now; synthetic data needs no network.";
+  static String m2(count) => "${count} bars now; synthetic data needs no network.";
 
   static String m3(count) => "${count} decimals";
 
   static String m4(price, time) => "Order price ${price} (${time})";
 
-  static String m5(open, high, low, close) =>
-      "Tapped: O ${open}  H ${high}  L ${low}  C ${close}";
+  static String m5(open, high, low, close) => "Tapped: O ${open}  H ${high}  L ${low}  C ${close}";
 
   static String m6(count) => "Load ${count} older bars";
 
-  static String m7(pages, count) =>
-      "Loaded ${pages} pages, ${count} bars in total.";
+  static String m7(pages, count) => "Loaded ${pages} pages, ${count} bars in total.";
 
   static String m8(index) => "Line ${index}";
 
@@ -241,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "historyStatus": m7,
     "homeLive": MessageLookupByLibrary.simpleMessage("Live market"),
     "homeSamples": MessageLookupByLibrary.simpleMessage("Samples"),
+    "homeStocks": MessageLookupByLibrary.simpleMessage("Stock market"),
     "indicatorBollDesc": MessageLookupByLibrary.simpleMessage(
       "Bollinger bands",
     ),
@@ -315,6 +313,28 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sub panels / volume",
     ),
     "indicatorWrDesc": MessageLookupByLibrary.simpleMessage("Williams %R"),
+    "intradayAverage": MessageLookupByLibrary.simpleMessage(
+      "Average price line",
+    ),
+    "intradayHint": MessageLookupByLibrary.simpleMessage(
+      "slotAxis fixes the x axis to the session\'s minutes, so the chart does not scroll or zoom; slots after the latest minute stay empty.",
+    ),
+    "intradayLimits": MessageLookupByLibrary.simpleMessage(
+      "Limit up / down lines",
+    ),
+    "intradayLimitsInRange": MessageLookupByLibrary.simpleMessage(
+      "Fit limits in range",
+    ),
+    "intradayLive": MessageLookupByLibrary.simpleMessage(
+      "Simulate live minutes",
+    ),
+    "intradayMarket": MessageLookupByLibrary.simpleMessage("Market"),
+    "intradayPercent": MessageLookupByLibrary.simpleMessage(
+      "Percent on the right axis",
+    ),
+    "intradayRangeHint": MessageLookupByLibrary.simpleMessage(
+      "mainRange keeps the range symmetric around the previous close and stretches it to include the limit prices.",
+    ),
     "keyboardSampleEnable": MessageLookupByLibrary.simpleMessage(
       "Enable keyboard",
     ),
@@ -566,10 +586,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "proIndicatorZigzag": MessageLookupByLibrary.simpleMessage("ZigZag"),
     "proLockFeature": MessageLookupByLibrary.simpleMessage("Pro feature"),
+    "proSampleAdjust": MessageLookupByLibrary.simpleMessage("Price adjustment"),
     "proSampleAlerts": MessageLookupByLibrary.simpleMessage("Price alerts"),
     "proSampleCompare": MessageLookupByLibrary.simpleMessage("Compare overlay"),
     "proSampleDrawing": MessageLookupByLibrary.simpleMessage("Drawing tools"),
     "proSampleFills": MessageLookupByLibrary.simpleMessage("Fill markers"),
+    "proSampleFiveDay": MessageLookupByLibrary.simpleMessage(
+      "Five-day intraday",
+    ),
     "proSampleIndicators": MessageLookupByLibrary.simpleMessage(
       "Advanced indicators",
     ),
@@ -642,6 +666,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "sampleCategoryMain": MessageLookupByLibrary.simpleMessage("Main chart"),
     "sampleCategoryPro": MessageLookupByLibrary.simpleMessage("Pro"),
+    "sampleCategoryStocks": MessageLookupByLibrary.simpleMessage("Stocks"),
     "sampleCategoryStorage": MessageLookupByLibrary.simpleMessage("Storage"),
     "sampleComputeDesc": MessageLookupByLibrary.simpleMessage(
       "Large data is computed in a background isolate; indicator errors are reported via a callback without affecting other indicators.",
@@ -698,6 +723,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "sampleIndicatorsTitle": MessageLookupByLibrary.simpleMessage(
       "Indicator switches",
     ),
+    "sampleIntradayDesc": MessageLookupByLibrary.simpleMessage(
+      "One trading day in fixed minute slots: lunch break without gaps, average price line, previous-close baseline with percent on the right, limit lines.",
+    ),
+    "sampleIntradayTitle": MessageLookupByLibrary.simpleMessage(
+      "Intraday chart",
+    ),
     "sampleKeyboardDesc": MessageLookupByLibrary.simpleMessage(
       "Arrow keys pan and zoom; Home / End jump to either end.",
     ),
@@ -749,6 +780,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Three free seriesStyle values, plus MainSeries instances in Pro.",
     ),
     "sampleSeriesTitle": MessageLookupByLibrary.simpleMessage("Main series"),
+    "sampleStockDailyDesc": MessageLookupByLibrary.simpleMessage(
+      "Daily bars over trading days only (weekends take no space), limit up / down marks and the red-up color convention.",
+    ),
+    "sampleStockDailyTitle": MessageLookupByLibrary.simpleMessage(
+      "Daily bars and limits",
+    ),
     "sampleStorageDesc": MessageLookupByLibrary.simpleMessage(
       "saveState / restoreState and KLineTheme.toJson / fromJson.",
     ),
@@ -815,6 +852,42 @@ class MessageLookup extends MessageLookupByLibrary {
     "settingSampleNotFound": MessageLookupByLibrary.simpleMessage(
       "Sample not found. Choose one from the menu.",
     ),
+    "stockAdjustBackward": MessageLookupByLibrary.simpleMessage(
+      "Backward adj.",
+    ),
+    "stockAdjustForward": MessageLookupByLibrary.simpleMessage("Forward adj."),
+    "stockAdjustNone": MessageLookupByLibrary.simpleMessage("Unadjusted"),
+    "stockAverage": MessageLookupByLibrary.simpleMessage("Avg"),
+    "stockBoardGrowth": MessageLookupByLibrary.simpleMessage(
+      "ChiNext / STAR ±20%",
+    ),
+    "stockBoardMain": MessageLookupByLibrary.simpleMessage("Main board ±10%"),
+    "stockBoardSt": MessageLookupByLibrary.simpleMessage("ST ±5%"),
+    "stockClosed": MessageLookupByLibrary.simpleMessage("Closed"),
+    "stockDailyHint": MessageLookupByLibrary.simpleMessage(
+      "LimitMarksOverlay compares each close with the previous close; PriceLimit rounds half up to the cent like the exchange.",
+    ),
+    "stockDataSource": MessageLookupByLibrary.simpleMessage(
+      "Data: Eastmoney, delayed quotes, for demo only",
+    ),
+    "stockLimitBoard": MessageLookupByLibrary.simpleMessage("Limit ratio"),
+    "stockLimitDown": MessageLookupByLibrary.simpleMessage("Limit down"),
+    "stockLimitDownShort": MessageLookupByLibrary.simpleMessage("LD"),
+    "stockLimitMarks": MessageLookupByLibrary.simpleMessage("Limit marks"),
+    "stockLimitUp": MessageLookupByLibrary.simpleMessage("Limit up"),
+    "stockLimitUpShort": MessageLookupByLibrary.simpleMessage("LU"),
+    "stockMarketA": MessageLookupByLibrary.simpleMessage("A-share"),
+    "stockMarketHk": MessageLookupByLibrary.simpleMessage("HK"),
+    "stockMarketUs": MessageLookupByLibrary.simpleMessage("US"),
+    "stockPeriodDay": MessageLookupByLibrary.simpleMessage("Daily"),
+    "stockPeriodFiveDay": MessageLookupByLibrary.simpleMessage("5 days"),
+    "stockPeriodIntraday": MessageLookupByLibrary.simpleMessage("Intraday"),
+    "stockPeriodMonth": MessageLookupByLibrary.simpleMessage("Monthly"),
+    "stockPeriodWeek": MessageLookupByLibrary.simpleMessage("Weekly"),
+    "stockPrevClose": MessageLookupByLibrary.simpleMessage("Prev close"),
+    "stockRedUp": MessageLookupByLibrary.simpleMessage("Red up, green down"),
+    "stockTitle": MessageLookupByLibrary.simpleMessage("Stocks"),
+    "stockTrading": MessageLookupByLibrary.simpleMessage("Trading"),
     "storageSampleHint": MessageLookupByLibrary.simpleMessage(
       "Save first, then zoom, drag dividers, change indicators or theme, and finally restore from the text. Market data is not saved.",
     ),

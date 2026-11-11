@@ -30,8 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(price, time) => "下单价 ${price}（${time}）";
 
-  static String m5(open, high, low, close) =>
-      "点中：开 ${open}  高 ${high}  低 ${low}  收 ${close}";
+  static String m5(open, high, low, close) => "点中：开 ${open}  高 ${high}  低 ${low}  收 ${close}";
 
   static String m6(count) => "往前加载 ${count} 根";
 
@@ -191,6 +190,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "historyStatus": m7,
     "homeLive": MessageLookupByLibrary.simpleMessage("实时行情"),
     "homeSamples": MessageLookupByLibrary.simpleMessage("配置大全"),
+    "homeStocks": MessageLookupByLibrary.simpleMessage("股票行情"),
     "indicatorBollDesc": MessageLookupByLibrary.simpleMessage("布林线"),
     "indicatorColor": MessageLookupByLibrary.simpleMessage("颜色"),
     "indicatorEmaDesc": MessageLookupByLibrary.simpleMessage("指数移动平均线"),
@@ -237,6 +237,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "副图 / 成交量",
     ),
     "indicatorWrDesc": MessageLookupByLibrary.simpleMessage("威廉指标"),
+    "intradayAverage": MessageLookupByLibrary.simpleMessage("均价线"),
+    "intradayHint": MessageLookupByLibrary.simpleMessage(
+      "slotAxis 把横轴固定为交易时段的分钟数，图表不再滚动缩放；最新一分钟之后的槽位留空。",
+    ),
+    "intradayLimits": MessageLookupByLibrary.simpleMessage("涨跌停线"),
+    "intradayLimitsInRange": MessageLookupByLibrary.simpleMessage("区间包含涨跌停价"),
+    "intradayLive": MessageLookupByLibrary.simpleMessage("模拟逐分钟推送"),
+    "intradayMarket": MessageLookupByLibrary.simpleMessage("市场"),
+    "intradayPercent": MessageLookupByLibrary.simpleMessage("右轴显示涨跌幅"),
+    "intradayRangeHint": MessageLookupByLibrary.simpleMessage(
+      "mainRange 让区间以昨收为中心对称，并把涨跌停价撑进图内。",
+    ),
     "keyboardSampleEnable": MessageLookupByLibrary.simpleMessage(
       "启用键盘 keyboard",
     ),
@@ -410,10 +422,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "proIndicatorWma": MessageLookupByLibrary.simpleMessage("加权移动平均线"),
     "proIndicatorZigzag": MessageLookupByLibrary.simpleMessage("之字转向"),
     "proLockFeature": MessageLookupByLibrary.simpleMessage("完整版功能"),
+    "proSampleAdjust": MessageLookupByLibrary.simpleMessage("复权"),
     "proSampleAlerts": MessageLookupByLibrary.simpleMessage("价格报警"),
     "proSampleCompare": MessageLookupByLibrary.simpleMessage("对比叠加"),
     "proSampleDrawing": MessageLookupByLibrary.simpleMessage("画线"),
     "proSampleFills": MessageLookupByLibrary.simpleMessage("成交标"),
+    "proSampleFiveDay": MessageLookupByLibrary.simpleMessage("五日分时"),
     "proSampleIndicators": MessageLookupByLibrary.simpleMessage("进阶指标"),
     "proSampleOrders": MessageLookupByLibrary.simpleMessage("订单线"),
     "proSamplePosition": MessageLookupByLibrary.simpleMessage("仓位和测量"),
@@ -456,6 +470,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "sampleCategoryInteraction": MessageLookupByLibrary.simpleMessage("交互"),
     "sampleCategoryMain": MessageLookupByLibrary.simpleMessage("主图"),
     "sampleCategoryPro": MessageLookupByLibrary.simpleMessage("完整版"),
+    "sampleCategoryStocks": MessageLookupByLibrary.simpleMessage("股票"),
     "sampleCategoryStorage": MessageLookupByLibrary.simpleMessage("存取"),
     "sampleComputeDesc": MessageLookupByLibrary.simpleMessage(
       "大数据量走后台 isolate；指标抛错时回调，不影响其他指标。",
@@ -500,6 +515,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "内置 8 个指标的组合。",
     ),
     "sampleIndicatorsTitle": MessageLookupByLibrary.simpleMessage("指标开关"),
+    "sampleIntradayDesc": MessageLookupByLibrary.simpleMessage(
+      "一个交易日按分钟固定槽位铺满：午休不留空、均价线、以昨收为基准且右侧显示涨跌幅、涨跌停线。",
+    ),
+    "sampleIntradayTitle": MessageLookupByLibrary.simpleMessage("分时图"),
     "sampleKeyboardDesc": MessageLookupByLibrary.simpleMessage(
       "方向键平移缩放，Home / End 跳到两头。",
     ),
@@ -539,6 +558,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "免费三种 seriesStyle，完整版再加 MainSeries 实例。",
     ),
     "sampleSeriesTitle": MessageLookupByLibrary.simpleMessage("主图画法"),
+    "sampleStockDailyDesc": MessageLookupByLibrary.simpleMessage(
+      "只按交易日排列的日K（周末不占位）、涨跌停标记和红涨绿跌配色。",
+    ),
+    "sampleStockDailyTitle": MessageLookupByLibrary.simpleMessage("日K与涨跌停"),
     "sampleStorageDesc": MessageLookupByLibrary.simpleMessage(
       "saveState / restoreState 与 KLineTheme.toJson / fromJson。",
     ),
@@ -589,6 +612,38 @@ class MessageLookup extends MessageLookupByLibrary {
     "settingSampleNotFound": MessageLookupByLibrary.simpleMessage(
       "没有这个样例，请从菜单选择",
     ),
+    "stockAdjustBackward": MessageLookupByLibrary.simpleMessage("后复权"),
+    "stockAdjustForward": MessageLookupByLibrary.simpleMessage("前复权"),
+    "stockAdjustNone": MessageLookupByLibrary.simpleMessage("不复权"),
+    "stockAverage": MessageLookupByLibrary.simpleMessage("均价"),
+    "stockBoardGrowth": MessageLookupByLibrary.simpleMessage("创业板/科创板 ±20%"),
+    "stockBoardMain": MessageLookupByLibrary.simpleMessage("主板 ±10%"),
+    "stockBoardSt": MessageLookupByLibrary.simpleMessage("ST ±5%"),
+    "stockClosed": MessageLookupByLibrary.simpleMessage("休市"),
+    "stockDailyHint": MessageLookupByLibrary.simpleMessage(
+      "LimitMarksOverlay 用前一日收盘价判断涨跌停；PriceLimit 按交易所规则四舍五入到分。",
+    ),
+    "stockDataSource": MessageLookupByLibrary.simpleMessage(
+      "数据来源：东方财富，行情可能延迟，仅供演示",
+    ),
+    "stockLimitBoard": MessageLookupByLibrary.simpleMessage("涨跌停幅度"),
+    "stockLimitDown": MessageLookupByLibrary.simpleMessage("跌停"),
+    "stockLimitDownShort": MessageLookupByLibrary.simpleMessage("跌停"),
+    "stockLimitMarks": MessageLookupByLibrary.simpleMessage("涨跌停标记"),
+    "stockLimitUp": MessageLookupByLibrary.simpleMessage("涨停"),
+    "stockLimitUpShort": MessageLookupByLibrary.simpleMessage("涨停"),
+    "stockMarketA": MessageLookupByLibrary.simpleMessage("A股"),
+    "stockMarketHk": MessageLookupByLibrary.simpleMessage("港股"),
+    "stockMarketUs": MessageLookupByLibrary.simpleMessage("美股"),
+    "stockPeriodDay": MessageLookupByLibrary.simpleMessage("日K"),
+    "stockPeriodFiveDay": MessageLookupByLibrary.simpleMessage("五日"),
+    "stockPeriodIntraday": MessageLookupByLibrary.simpleMessage("分时"),
+    "stockPeriodMonth": MessageLookupByLibrary.simpleMessage("月K"),
+    "stockPeriodWeek": MessageLookupByLibrary.simpleMessage("周K"),
+    "stockPrevClose": MessageLookupByLibrary.simpleMessage("昨收"),
+    "stockRedUp": MessageLookupByLibrary.simpleMessage("红涨绿跌"),
+    "stockTitle": MessageLookupByLibrary.simpleMessage("股票"),
+    "stockTrading": MessageLookupByLibrary.simpleMessage("交易中"),
     "storageSampleHint": MessageLookupByLibrary.simpleMessage(
       "先保存，再缩放、拖分隔条、换指标或主题，最后从文本恢复。行情数据不在存档里。",
     ),

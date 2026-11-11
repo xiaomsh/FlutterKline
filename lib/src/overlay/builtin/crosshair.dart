@@ -89,9 +89,9 @@ class CrosshairOverlay extends OverlayPlugin {
       final valueText = ctx.formatAxisValue(panel, panel.valueOf(y));
       final vh = ctx.pool.text(valueText, labelStyle).height + 4;
       final ly = clampSafe(y - vh / 2, panel.rect.top, panel.rect.bottom - vh);
-      void label(double x, bool alignRight) => ctx.pool.drawBoxedLabel(
+      void label(double x, bool alignRight, [String? text]) => ctx.pool.drawBoxedLabel(
         canvas,
-        valueText,
+        text ?? valueText,
         labelStyle,
         Offset(x, ly),
         theme.crosshairLabelBg,
@@ -100,7 +100,13 @@ class CrosshairOverlay extends OverlayPlugin {
       final sec = panel.secondary;
       final rightAxis = ctx.axisOutside || ctx.axisInside;
       if (ctx.axisOutside) label(ctx.yAxisRect.left, false);
-      if (ctx.hasLeftAxis && (sec == null || !rightAxis)) label(ctx.leftAxisRect.right, true);
+      if (ctx.hasLeftAxis && (sec == null || !rightAxis)) {
+        label(
+          ctx.leftAxisRect.right,
+          true,
+          ctx.formatAxisValue(panel, panel.valueOf(y), left: true),
+        );
+      }
       if (ctx.axisInside) label(ctx.chartRect.right, true);
       // Second value axis readout goes on its tick side, same position as grid labels
       if (sec != null) {

@@ -17,7 +17,9 @@ import '../render/grid_painter.dart';
 import '../render/indicator_painter.dart';
 import '../render/main_series.dart';
 import '../render/overlay_painter.dart';
+import '../render/range_adjust.dart';
 import '../render/series_painter.dart';
+import '../render/slot_axis.dart';
 import '../render/time_ticks.dart';
 import '../theme/theme.dart';
 import 'chart_gestures.dart';
@@ -85,6 +87,10 @@ class KChart extends StatefulWidget {
     this.subFlex = 1,
     this.logScale = false,
     this.percentScale = false,
+    this.percentBase,
+    this.percentRightOnly = false,
+    this.mainRange,
+    this.slotAxis,
     this.outlierClampRatio,
     this.seriesStyle = MainSeriesStyle.candle,
     this.series,
@@ -193,6 +199,22 @@ class KChart extends StatefulWidget {
   /// Percentage scale: main chart ticks and crosshair labels show change relative to the first
   /// visible close
   final bool percentScale;
+
+  /// Fixed base for [percentScale] labels (e.g. a stock's previous close); null uses the first
+  /// visible close
+  final double? percentBase;
+
+  /// With [percentScale] and a left tick strip ([YAxisPosition.both]): prices on the left,
+  /// percent on the right
+  final bool percentRightOnly;
+
+  /// Adjusts the final main range (after padding), e.g. `StockRange`; see
+  /// [ChartConfig.mainRange]. Relayouts only when it changes by `==`
+  final RangeAdjust? mainRange;
+
+  /// Fixed-slot time axis for intraday charts (e.g. `IntradayAxis`): the chart no longer scrolls
+  /// or zooms and bar `i` sits in slot `i`. Relayouts only when it changes by `==`
+  final SlotAxis? slotAxis;
 
   /// Spike clamping: high/low may exceed the visible close range by at most span * this factor
   /// (0.5~2 recommended); null disables
@@ -346,6 +368,7 @@ class _KChartState extends State<KChart> with TickerProviderStateMixin, WidgetsB
     if (widget.minBarWidth != null) {
       _controller.viewport.minBarWidth = widget.minBarWidth!;
     }
+    _controller.viewport.fixedSlots = widget.slotAxis?.slotCount;
     _fling = AnimationController.unbounded(vsync: this);
     _price = PriceAnimator(this, _controller, enabled: () => widget.animatePrice);
     _wire();
@@ -518,10 +541,12 @@ class _KChartState extends State<KChart> with TickerProviderStateMixin, WidgetsB
       }
       // Affects only future landings; doesn't move the current position
       vp.initialRightBlankRatio = widget.initialRightBlankRatio;
+      vp.fixedSlots = widget.slotAxis?.slotCount;
     });
     if (widget.controller != oldWidget.controller) {
       _unwire(oldWidget.controller);
       _wire();
+      _controller.viewport.fixedSlots = widget.slotAxis?.slotCount;
       _controller.viewport.clampBarWidthBounds();
     } else if (widget.mode != oldWidget.mode) {
       _gesture.mode = widget.mode ?? BrowseMode();

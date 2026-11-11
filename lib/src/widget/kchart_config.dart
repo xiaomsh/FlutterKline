@@ -18,6 +18,10 @@ ChartConfig buildChartConfig(KChart w, TimeFormatter timeFormatter) {
     subFlex: w.subFlex,
     logScale: w.logScale,
     percentScale: w.percentScale,
+    percentBase: w.percentBase,
+    percentRightOnly: w.percentRightOnly,
+    mainRange: w.mainRange,
+    slotAxis: w.slotAxis,
     outlierClampRatio: w.outlierClampRatio,
     seriesStyle: w.seriesStyle,
     series: w.series,
@@ -71,8 +75,17 @@ void syncChartConfig(ChartConfig c, KChart w, KChart old, TimeFormatter timeForm
     c.logScale = w.logScale;
     relayout = true;
   }
-  if (w.percentScale != old.percentScale) {
-    c.percentScale = w.percentScale;
+  if (w.percentScale != old.percentScale ||
+      w.percentBase != old.percentBase ||
+      w.percentRightOnly != old.percentRightOnly ||
+      w.mainRange != old.mainRange ||
+      w.slotAxis != old.slotAxis) {
+    c
+      ..percentScale = w.percentScale
+      ..percentBase = w.percentBase
+      ..percentRightOnly = w.percentRightOnly
+      ..mainRange = w.mainRange
+      ..slotAxis = w.slotAxis;
     relayout = true;
   }
   if (w.outlierClampRatio != old.outlierClampRatio) {

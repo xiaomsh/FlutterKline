@@ -8,8 +8,8 @@ import '../model/bar.dart';
 import 'indicator.dart';
 import 'indicator_registry.dart';
 
-/// Slots per bar after packing: time, open, high, low, close, vol
-const int _stride = 6;
+/// Slots per bar after packing: time, open, high, low, close, vol, amount (NaN when absent)
+const int _stride = 7;
 
 /// Packs bars into a compact [Float64List] (ms timestamps are far below 2^53, so doubles lose no
 /// precision); only one buffer crosses the isolate boundary
@@ -23,6 +23,7 @@ Float64List packBars(List<Bar> bars) {
     out[j++] = b.low;
     out[j++] = b.close;
     out[j++] = b.vol;
+    out[j++] = b.amount ?? double.nan;
   }
   return out;
 }
@@ -36,6 +37,7 @@ List<Bar> _unpackBars(Float64List d, int count) => [
       low: d[o + 3],
       close: d[o + 4],
       vol: d[o + 5],
+      amount: d[o + 6].isNaN ? null : d[o + 6],
     ),
 ];
 
