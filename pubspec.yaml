@@ -1,0 +1,16 @@
+name: klinex
+description: A minimal, fast, plugin-based K-line (candlestick) chart for Flutter. Zero third-party dependencies.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

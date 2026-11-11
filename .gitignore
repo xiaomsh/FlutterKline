@@ -1,0 +1,116 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.metadata
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+devtools_options.yaml
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/example/android/app/debug
+/example/android/app/profile
+/example/android/app/release
+.gradle
+local.properties
+gradle-wrapper.jar
+/captures/
+gradlew
+gradlew.bat
+GeneratedPluginRegistrant.java
+.cxx/
+.kotlin/
+
+**/dgph
+*.mode1v3
+*.mode2v3
+*.moved-aside
+*.pbxuser
+*.perspectivev3
+**/*sync/
+# 上面这条会误伤源码目录 pro/sync
+!lib/src/pro/sync/
+.sconsign.dblite
+.tags*
+**/.vagrant/
+**/DerivedData/
+Icon?
+# macOS 不区分大小写时 Icon? 也会匹配 web/icons
+!example/web/icons/
+**/Pods/
+**/.symlinks/
+profile
+xcuserdata
+**/.generated/
+Flutter/App.framework
+Flutter/Flutter.framework
+Flutter/Flutter.podspec
+Flutter/Generated.xcconfig
+Flutter/ephemeral/
+Flutter/app.flx
+Flutter/app.zip
+Flutter/flutter_assets/
+Flutter/flutter_export_environment.sh
+ServiceDefinitions.json
+Runner/GeneratedPluginRegistrant.m
+Runner/GeneratedPluginRegistrant.h
+
+# Exceptions to above rules.
+!default.mode1v3
+!default.mode2v3
+!default.pbxuser
+!default.perspectivev3
+
+lib/generated/l10n.dart
+lib/generated/intl/
+lib/generated/fonts.gen.dart
+
+build/
+Podfile.lock
+# 库不提交 lock，example 的提交
+/pubspec.lock
+
+# Dart/Flutter artifacts
+.packages
+.env*
+*.dart.js
+*.info.json
+*.js
+*.js_
+*.js.deps
+*.js.map
+

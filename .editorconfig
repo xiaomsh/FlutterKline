@@ -1,0 +1,26 @@
+root = true
+
+# 匹配所有文件（默认全局配置）
+[*]
+# 缩进风格：使用空格（space）而不是制表符（tab）
+indent_style = space
+
+# 缩进大小：每次缩进使用 2 个空格
+indent_size = 2
+
+# 换行符类型：使用 Unix/Linux 风格的换行符（LF）
+end_of_line = lf
+
+# 文件编码：统一使用 utf-8 编码
+charset = utf-8
+
+# 是否在保存时修剪行尾多余的空格：关闭（若设为 true 则自动删除行尾空格）
+trim_trailing_whitespace = false
+
+# 是否在文件末尾自动插入一个空行：打开（若设为 true 则强制文件末尾有一空行）
+insert_final_newline = true
+
+# 专为 Dart 文件定制的规则
+[*.dart]
+# 限制单行最大字符数为 100（Dart 官方推荐的标准行宽）
+max_line_length = 100

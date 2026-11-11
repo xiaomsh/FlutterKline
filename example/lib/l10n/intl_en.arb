@@ -1,0 +1,584 @@
+{
+  "@@locale": "en",
+  "language": "中文",
+  "@language": {
+    "description": "Label of the language switch: the language it switches to"
+  },
+  "homeSamples": "Samples",
+  "homeLive": "Live market",
+  "chartTime": "Time",
+  "chartOpen": "O",
+  "chartHigh": "H",
+  "chartLow": "L",
+  "chartClose": "C",
+  "chartChange": "Chg%",
+  "chartVolume": "Vol",
+  "chartName": "Candlestick chart",
+  "chartRangeTo": "to",
+  "chartLatest": "last price",
+  "chartSeparator": ", ",
+  "sampleCategoryData": "Data",
+  "sampleCategoryMain": "Main chart",
+  "sampleCategoryCoordinates": "Coordinates",
+  "sampleCategoryIndicators": "Indicators",
+  "sampleCategoryInteraction": "Interaction",
+  "sampleCategoryAppearance": "Appearance",
+  "sampleCategoryExtensions": "Extensions",
+  "sampleCategoryPro": "Pro",
+  "sampleCategoryStorage": "Storage",
+  "sampleLockedDescription": "Pro feature",
+  "sampleDataLimitTitle": "Data size and limit",
+  "sampleDataLimitDesc": "Load the whole series with setBars; maxBars drops the oldest bars when exceeded.",
+  "sampleRealtimeTitle": "Real-time push",
+  "sampleRealtimeDesc": "applyTick updates the last bar on the same timestamp and appends on a new one; autoFollow sticks to the latest.",
+  "sampleHistoryTitle": "History pagination",
+  "sampleHistoryDesc": "Scrolling to the left triggers onLoadMore, prependHistory adds older data, and the viewport does not jump.",
+  "sampleSeriesTitle": "Main series",
+  "sampleSeriesDesc": "Three free seriesStyle values, plus MainSeries instances in Pro.",
+  "sampleCandleTitle": "Candle style",
+  "sampleCandleDesc": "Solid / hollow, with separate wick and border colors.",
+  "samplePriceTitle": "Price line",
+  "samplePriceDesc": "Last price line and tag, close countdown, bid / ask, mark price hint, price animation, and visible high / low labels.",
+  "samplePriceSearchTerms": "countdown order book mark price",
+  "sampleScaleTitle": "Log / percent / inverted",
+  "sampleScaleDesc": "The three scale modes can be combined.",
+  "sampleLockRangeTitle": "Lock range",
+  "sampleLockRangeDesc": "Pin the main chart range to the current one; panning and pushes no longer rescale it.",
+  "sampleSecondaryAxisTitle": "Secondary axis",
+  "sampleSecondaryAxisDesc": "Overlay indicators of a different scale on the main chart with their own range.",
+  "sampleAxisPositionTitle": "Price axis position",
+  "sampleAxisPositionDesc": "Right inside / outside, left, both sides, and axis width.",
+  "sampleIndicatorsTitle": "Indicator switches",
+  "sampleIndicatorsDesc": "Combine the 8 built-in indicators.",
+  "sampleIndicatorParamTitle": "{name} parameters",
+  "@sampleIndicatorParamTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sampleIndicatorParamDesc": "Change parameters and colors; the indicator recomputes immediately.",
+  "samplePanelsTitle": "Panel height",
+  "samplePanelsDesc": "Main / sub panel weights; drag the divider to resize.",
+  "sampleComputeTitle": "Compute and errors",
+  "sampleComputeDesc": "Large data is computed in a background isolate; indicator errors are reported via a callback without affecting other indicators.",
+  "sampleCrosshairTitle": "Crosshair",
+  "sampleCrosshairDesc": "Snap mode, tooltip toggle and custom tooltip.",
+  "sampleGesturesTitle": "Gestures",
+  "sampleGesturesDesc": "Vertical pan area, axis drag to scale, and tap a bar to read its price.",
+  "sampleKeyboardTitle": "Keyboard",
+  "sampleKeyboardDesc": "Arrow keys pan and zoom; Home / End jump to either end.",
+  "sampleThemeTitle": "Theme",
+  "sampleThemeDesc": "Light / dark background, up / down colors, and indicator palette.",
+  "sampleGridTitle": "Grid and text",
+  "sampleGridDesc": "Grid visibility, dashes, line width, and axis font size.",
+  "sampleFormatTitle": "Formatting",
+  "sampleFormatDesc": "Price decimals, time zone, custom time format, and chart label language.",
+  "sampleTimeAxisTitle": "Tiered time axis",
+  "sampleTimeAxisDesc": "Ticks land on year / month / day / hour boundaries.",
+  "sampleWatermarkTitle": "Watermark",
+  "sampleWatermarkDesc": "underlayBuilder paints below the candles.",
+  "sampleOverlayTitle": "Custom overlay",
+  "sampleOverlayDesc": "overlayBuilder paints plain widgets on the chart that follow panning and zooming.",
+  "sampleCustomSeriesTitle": "Custom main series",
+  "sampleCustomSeriesDesc": "Implement MainSeries.paint without changing the library source.",
+  "sampleDepthTitle": "Depth chart",
+  "sampleDepthDesc": "DepthChart has its own price axis and works alone or next to the candles.",
+  "sampleStorageTitle": "Save and restore",
+  "sampleStorageDesc": "saveState / restoreState and KLineTheme.toJson / fromJson.",
+  "sampleResetPage": "Reset this page",
+  "sampleFrameStatus": "KLINEX · Offline synthetic data · {count} bars",
+  "@sampleFrameStatus": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sampleBackToLatest": "Back to latest",
+  "sampleAutoPush": "Auto push",
+  "settingPageTitle": "Klinex Samples",
+  "settingLightMode": "Light",
+  "settingDarkMode": "Dark",
+  "settingSampleNotFound": "Sample not found. Choose one from the menu.",
+  "settingMenuSearchHint": "Search features or APIs",
+  "controlsSliderValue": "{label}: {value}",
+  "@controlsSliderValue": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "controlsEquivalentCode": "Equivalent code",
+  "controlsCopyCode": "Copy code",
+  "controlsCodeCopied": "Code copied",
+  "indicatorFieldsLine": "Line {index}",
+  "@indicatorFieldsLine": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "indicatorFieldsPeriod": "Period {index}",
+  "@indicatorFieldsPeriod": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "indicatorFieldsLineColor": "Line {index} color",
+  "@indicatorFieldsLineColor": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "paramInputIntError": "Enter a finite positive integer, at most 100000",
+  "paramInputNumberError": "Enter a finite positive number, at most 100000",
+  "axisPositionLabel": "Price axis position",
+  "axisPositionOutside": "Right, outside",
+  "axisPositionInside": "Right, inside",
+  "axisPositionLeft": "Left",
+  "axisPositionBoth": "Both sides",
+  "axisPositionWidth": "Axis width",
+  "axisPositionHint": "Inside mode takes no width and draws ticks over the candles; outside / left / both reserve an axis strip.",
+  "lockRangeLock": "Lock current price range",
+  "lockRangeLockedAt": "Locked at {min} ~ {max}",
+  "@lockRangeLockedAt": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "lockRangeHint": "Once locked, panning and new data no longer rescale prices; dragging the price axis to scale / pan still applies on top of the locked range.",
+  "lockRangeStorageHint": "Saved with saveState; setBars unlocks automatically.",
+  "scaleModeLog": "Log scale logScale",
+  "scaleModePercent": "Percent scale percentScale",
+  "scaleModeInvert": "Inverted scale invertScale",
+  "scaleModeHint": "Log scale falls back to linear when the range is not positive; percent only changes tick labels (the leftmost visible close is 0%).",
+  "scaleModeInvertHint": "Inversion only affects the main chart: small values on top, and dragging the price axis is reversed too.",
+  "secondaryAxisNone": "None",
+  "secondaryAxisOverlay": "Overlay on secondary axis",
+  "secondaryAxisRight": "Right (secondary labels inside the left edge)",
+  "secondaryAxisBoth": "Both sides (secondary axis uses the left strip)",
+  "secondaryAxisPercent": "Secondary axis in % format secondaryFormatter",
+  "secondaryAxisHint": "The secondary axis has its own range and does not squeeze prices; the crosshair shows both readings.",
+  "dataLimitInitial": "Initial bars",
+  "dataLimitMaxBars": "History limit maxBars",
+  "dataLimitUnlimited": "Unlimited",
+  "dataLimitRegenerate": "Regenerate",
+  "dataLimitCurrent": "{count} bars now; synthetic data needs no network.",
+  "@dataLimitCurrent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "historyAutoLoad": "Auto-load when scrolled to the left",
+  "historyLoadButton": "Load {count} older bars",
+  "@historyLoadButton": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "historyStatus": "Loaded {pages} pages, {count} bars in total.",
+  "@historyStatus": {
+    "placeholders": {
+      "pages": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "historyHint": "Drag toward history before loading and watch that the viewport does not jump.",
+  "realtimeAutoPush": "Auto push (append a bar every 5 pushes)",
+  "realtimeInterval": "Push interval",
+  "realtimeMillis": "{ms} ms",
+  "@realtimeMillis": {
+    "placeholders": {
+      "ms": {
+        "type": "int"
+      }
+    }
+  },
+  "realtimeOneSecond": "1 s",
+  "realtimeFollow": "Follow latest autoFollow",
+  "realtimeAppend": "Append a bar",
+  "realtimeUpdateLast": "Update last price",
+  "realtimeHint": "With follow off, drag left a bit: pushes will not pull the viewport back to the latest.",
+  "candleFill": "Fill",
+  "candleFillSolid": "Solid",
+  "candleFillHollowUp": "Hollow up",
+  "candleFillHollowDown": "Hollow down",
+  "candleWickColor": "Separate wick color (grey)",
+  "candleBorder": "Candle border",
+  "priceLineShowPrice": "Last price line + tag",
+  "priceLineCountdown": "Countdown",
+  "priceLineBook": "Bid / ask",
+  "priceLinePriceType": "Candle price type",
+  "priceLinePriceTypeHint": "Futures can draw candles by mark or index price; a hint then shows in the lower left so it is not confused with the last trade price (only the hint changes here, not the data).",
+  "priceLineAnimatePrice": "Price animation animatePrice",
+  "priceLineAnimateRange": "Range animation animateRange",
+  "priceLineHighLow": "High / low labels showHighLow",
+  "priceLineOverlayHint": "The library's PriceLineOverlay only draws the dashed line.",
+  "priceLineTagsHint": "Price tags, close countdown and best bid / ask on the y axis are drawn by overlayBuilder (the demo's AxisPriceTags).",
+  "priceLineStackHint": "Crowded tags are ordered by price from high to low, ask → last → bid at equal prices; scrolling into history adds a reference tag.",
+  "priceLineDataHint": "The synthetic data here makes one bar every 3 seconds, the countdown follows that pace, and the order book is simulated.",
+  "priceLineAnimateHint": "Price animation slides the last close and price line to the new value in about 200 ms; display only.",
+  "priceLineTypeLast": "Last price",
+  "priceLineTypeMark": "Mark price",
+  "priceLineTypeIndex": "Index price",
+  "priceLineTipMark": "Showing mark price candles",
+  "priceLineTipIndex": "Showing index price candles",
+  "seriesLabel": "Main series",
+  "seriesCandle": "Candles",
+  "seriesLine": "Line",
+  "seriesArea": "Area",
+  "seriesProSuffix": "{name} (Pro)",
+  "@seriesProSuffix": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "seriesHint": "The series only decides how bars are drawn; Renko, line break and other transforms that change the data itself are in Pro's \"Data transforms\".",
+  "commonSave": "Save",
+  "formatSampleDecimals": "Price decimals",
+  "formatSampleDecimalsOption": "{count} decimals",
+  "@formatSampleDecimalsOption": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "formatSampleTimezone": "Time zone utcOffset",
+  "formatSampleCustomTime": "Custom time format timeFormatter",
+  "formatSampleCustomLabels": "Custom labels",
+  "formatSampleHint": "When timeFormatter is set, it handles the time zone; tooltip and legend text follow labels.",
+  "gridSampleShowGrid": "Show grid showGrid",
+  "gridSampleDash": "Dashed grid gridLineDash",
+  "gridSampleTextSize": "Axis text size axisTextSize",
+  "gridSampleLineWidth": "Grid line width gridLineWidth",
+  "themeSampleBase": "Base",
+  "themeSampleBaseFollow": "Follow app brightness",
+  "themeSamplePalette": "Colors",
+  "themeSamplePaletteDefault": "Default",
+  "themeSamplePaletteOcean": "Blue up, orange down",
+  "themeSamplePaletteWarm": "Warm indicator lines",
+  "themeSampleHint": "KLineTheme supports toJson / fromJson; copyWith changes only the fields you need.",
+  "timeAxisSampleTickYear": "{year}",
+  "@timeAxisSampleTickYear": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "timeAxisSampleMonthNames": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+  "@timeAxisSampleMonthNames": {
+    "description": "Short month names, comma separated, January first"
+  },
+  "timeAxisSampleTickDay": "{day}",
+  "@timeAxisSampleTickDay": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "timeAxisSampleTiered": "Tiered time axis tieredTimeAxis",
+  "timeAxisSampleCustomTick": "Custom tick text tickFormatter",
+  "timeAxisSampleTimezone": "Time zone utcOffset",
+  "timeAxisSampleHint": "Ticks and vertical grid lines move with the chart; day and month ticks are bold. Zooming picks an interval that does not crowd. Recommended for unevenly spaced data such as renko.",
+  "watermarkSampleShow": "Show watermark",
+  "watermarkSampleSize": "Font size",
+  "watermarkSampleHint": "underlayBuilder receives the RenderContext and can position by the main panel rect; it sits below the candles and does not block gestures.",
+  "customSeriesSampleDots": "Close price dots",
+  "customSeriesSampleRadius": "Dot radius",
+  "customSeriesSampleHint": "Implement MainSeries.paint: ctx provides coordinate conversion and the visible range, no library changes needed.",
+  "depthSampleWithKline": "Show candles above",
+  "depthSampleLevels": "Levels",
+  "depthSampleBidSkew": "Bid depth multiplier",
+  "overlaySampleVisibleRange": "Visible {start} - {end}",
+  "@overlaySampleVisibleRange": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "overlaySampleLatest": "Latest",
+  "overlaySampleRangeBadge": "Visible range badge",
+  "overlaySampleLastBadge": "Label above the latest candle",
+  "overlaySampleHint": "overlayBuilder gets the RenderContext (coordinate conversion, visible area) every frame and returns any widget, which follows panning and zooming.",
+  "computeSampleBusy": "Computing in background…",
+  "computeSampleAsync": "Background isolate asyncCompute",
+  "computeSampleHint": "This page has 10,000 bars; a full computation goes to the background only from 2,000 bars, and on Web it depends on platform support.",
+  "computeSampleTriggerError": "Demo indicator error callback",
+  "indicatorParamSamplePeriod": "Period",
+  "indicatorParamSampleStdDev": "Std dev multiplier",
+  "indicatorParamSampleShortPeriod": "Short period",
+  "indicatorParamSampleLongPeriod": "Long period",
+  "indicatorParamSampleSignalPeriod": "Signal period",
+  "indicatorParamSampleKSmooth": "K smoothing",
+  "indicatorParamSampleDSmooth": "D smoothing",
+  "indicatorParamSampleHint": "Changing a parameter changes the indicator id and recomputes it fully; invalid combinations are not applied and the reason is shown.",
+  "indicatorSwitchSampleMain": "Main overlays",
+  "indicatorSwitchSampleSub": "Sub panels / volume",
+  "indicatorSwitchSampleHint": "Each indicator's parameters are on its own \"Parameters\" page; Pro adds 40 advanced indicators.",
+  "panelsSampleMainFlex": "Main panel weight mainFlex",
+  "panelsSampleSubFlex": "Weight per sub panel subFlex",
+  "panelsSampleResizable": "Drag dividers to resize panelResizable",
+  "panelsSampleHint": "Dragged heights are kept in ChartConfig.panelWeights and saved / restored with saveState.",
+  "crosshairSampleCustomTooltip": "Bar {index} · close {close}",
+  "@crosshairSampleCustomTooltip": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "close": {
+        "type": "String"
+      }
+    }
+  },
+  "crosshairSampleSnap": "Snap crosshairSnap",
+  "crosshairSampleSnapFree": "Follow finger",
+  "crosshairSampleSnapClose": "Close price",
+  "crosshairSampleSnapOhlc": "Nearest of OHLC",
+  "crosshairSampleShowTooltip": "Show tooltip",
+  "crosshairSampleTooltipStyle": "Tooltip style tooltipStyle",
+  "crosshairSampleStyleInline": "One line above the legend",
+  "crosshairSampleStyleCard": "Floating card",
+  "crosshairSampleCustomBuilder": "Custom tooltip tooltipBuilder",
+  "crosshairSampleHint": "On mobile, long-press the chart; on desktop, hover over it.",
+  "gestureSampleOrderPrice": "Order price {price} ({time})",
+  "@gestureSampleOrderPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "gestureSampleYPan": "Vertical pan yPan",
+  "gestureSampleYPanNone": "No pan, leave it to outer scrolling",
+  "gestureSampleYPanAxis": "Only on the price axis",
+  "gestureSampleYPanChart": "Whole main panel",
+  "gestureSampleAxisDrag": "Drag axis to zoom axisDragScale",
+  "gestureSampleAxisDragHint": "When on, drag the price axis to zoom prices and the time axis to zoom time; double-tap to reset.",
+  "gestureSampleBarTap": "Tap candle for price onBarTap",
+  "gestureSampleBarTapHint": "Tap a candle to get its Bar; trading pages often use it to fill the close price into the order form. With onBarTap set, double-tap no longer resets the y axis.",
+  "gestureSampleTapped": "Tapped: O {open}  H {high}  L {low}  C {close}",
+  "@gestureSampleTapped": {
+    "placeholders": {
+      "open": {
+        "type": "String"
+      },
+      "high": {
+        "type": "String"
+      },
+      "low": {
+        "type": "String"
+      },
+      "close": {
+        "type": "String"
+      }
+    }
+  },
+  "keyboardSampleEnable": "Enable keyboard",
+  "keyboardSampleFocusHint": "Tap the chart first to focus it. The chart ignores keys while a text field has focus.",
+  "keyboardSampleShortcuts": "Left / Right: pan\nUp / Down or + / -: zoom\nHome / End: earliest / latest\nEsc: clear crosshair",
+  "storageSampleSaved": "Saved: zoom, indicators, locked coordinates, panel heights and theme.",
+  "storageSampleNeedChartTheme": "Must contain chart and theme objects",
+  "storageSampleIndicatorsNotList": "chart.indicators must be a list",
+  "storageSampleRestored": "Restored.",
+  "storageSampleRestoreFailed": "Restore failed: {error}",
+  "@storageSampleRestoreFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "storageSampleHint": "Save first, then zoom, drag dividers, change indicators or theme, and finally restore from the text. Market data is not saved.",
+  "storageSampleRestore": "Restore from text",
+  "storageSampleSwapIndicators": "Swap indicators",
+  "storageSampleSwitchTheme": "Switch theme",
+  "storageSampleJsonHint": "Saved JSON",
+  "commonReset": "Reset",
+  "liveConnecting": "Connecting…",
+  "liveLogSegment": "Log segment",
+  "liveSwitchMarket": "Switch market",
+  "liveChartSettings": "Chart Settings",
+  "liveTapToRetry": "Tap to retry",
+  "liveIndicatorParams": "Indicator parameters",
+  "liveGoToSettings": "Configure",
+  "liveSectionDisplay": "Display",
+  "liveLastPrice": "Last price",
+  "liveCountdown": "Countdown",
+  "liveBookPrice": "Bid/ask",
+  "liveYAxisOutside": "Y-axis outside",
+  "liveAutoFollow": "Follow latest",
+  "liveSectionChart": "Chart",
+  "liveChartType": "Chart type",
+  "liveSeriesCandle": "Candlestick",
+  "liveSeriesLine": "Line",
+  "liveSeriesArea": "Area",
+  "liveHeikinAshi": "Heikin-Ashi",
+  "liveLogScale": "Log scale",
+  "livePercentScale": "Percent scale",
+  "liveTimeZone": "Time zone",
+  "liveTimeZoneDevice": "Device",
+  "liveTimeZoneShanghai": "UTC+8 Shanghai",
+  "liveTimeZoneNewYork": "UTC-5 New York (winter)",
+  "liveSectionChartHeight": "Chart height",
+  "liveIntervalMore": "More",
+  "liveInterval1m": "1m",
+  "liveInterval3m": "3m",
+  "liveInterval5m": "5m",
+  "liveInterval15m": "15m",
+  "liveInterval30m": "30m",
+  "liveInterval1h": "1h",
+  "liveInterval2h": "2h",
+  "liveInterval4h": "4h",
+  "liveInterval6h": "6h",
+  "liveInterval8h": "8h",
+  "liveInterval12h": "12h",
+  "liveInterval1d": "1D",
+  "liveInterval3d": "3D",
+  "liveInterval1w": "1W",
+  "liveInterval1M": "1M",
+  "liveLoadFailed": "Failed to load market data: {reason}",
+  "@liveLoadFailed": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "livePleaseRetry": "please retry",
+  "liveNoData": "No data returned",
+  "proSampleTransforms": "Data transforms",
+  "proSampleIndicators": "Advanced indicators",
+  "proSampleDrawing": "Drawing tools",
+  "proSampleOrders": "Order lines",
+  "proSampleAlerts": "Price alerts",
+  "proSampleFills": "Fill markers",
+  "proSamplePosition": "Position and measure",
+  "proSampleReplay": "Replay",
+  "proSampleSync": "Linked charts",
+  "proSampleCompare": "Compare overlay",
+  "proSeriesOhlc": "OHLC bars",
+  "proSeriesVolCandle": "Volume candles",
+  "proSeriesMarkers": "Line with markers",
+  "proSeriesStep": "Step line",
+  "proSeriesHlcArea": "HLC area",
+  "proSeriesBaseline": "Baseline",
+  "proSeriesColumn": "Columns",
+  "proSeriesHiLo": "High-low",
+  "proGroupMain": "Main chart (Pro)",
+  "proGroupSub": "Sub chart (Pro)",
+  "proIndicatorWma": "Weighted moving average",
+  "proIndicatorSar": "Parabolic SAR",
+  "proIndicatorSt": "Supertrend",
+  "proIndicatorKc": "Keltner channel",
+  "proIndicatorDc": "Donchian channel",
+  "proIndicatorIchi": "Ichimoku cloud",
+  "proIndicatorDema": "Double EMA",
+  "proIndicatorTema": "Triple EMA",
+  "proIndicatorHma": "Hull moving average",
+  "proIndicatorVwma": "Volume-weighted MA",
+  "proIndicatorKama": "Kaufman adaptive MA",
+  "proIndicatorAlma": "Arnaud Legoux MA",
+  "proIndicatorLsma": "Least squares MA",
+  "proIndicatorPivot": "Pivot points",
+  "proIndicatorZigzag": "ZigZag",
+  "proIndicatorCci": "Commodity channel index",
+  "proIndicatorObv": "On-balance volume",
+  "proIndicatorStochRsi": "Stochastic RSI",
+  "proIndicatorAtr": "Average true range",
+  "proIndicatorDmi": "Directional movement index",
+  "proIndicatorMfi": "Money flow index",
+  "proIndicatorCmf": "Chaikin money flow",
+  "proIndicatorRoc": "Rate of change",
+  "proIndicatorMtm": "Momentum",
+  "proIndicatorTrix": "Triple exponential average",
+  "proIndicatorStoch": "Stochastic oscillator",
+  "proIndicatorAroon": "Aroon",
+  "proIndicatorStd": "Standard deviation",
+  "proIndicatorHv": "Historical volatility",
+  "proIndicatorAd": "Accumulation/distribution",
+  "proIndicatorCho": "Chaikin oscillator",
+  "proIndicatorPercentB": "Bollinger %B",
+  "proIndicatorBbw": "Bollinger bandwidth",
+  "proIndicatorVortex": "Vortex indicator",
+  "proIndicatorChop": "Choppiness index",
+  "proIndicatorAo": "Awesome oscillator",
+  "proIndicatorPpo": "Percentage price oscillator",
+  "proIndicatorFisher": "Fisher transform",
+  "netRequestCancelled": "Request cancelled",
+  "netServerError": "Server error",
+  "netConnectTimeout": "Connection timed out",
+  "netSendTimeout": "Send timed out",
+  "netReceiveTimeout": "Receive timed out",
+  "netConnectionFailed": "Network connection failed",
+  "axisTagAsk": "S",
+  "axisTagBid": "B",
+  "indicatorParamsNotApplied": "{name} params not applied: {reason}",
+  "@indicatorParamsNotApplied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "indicatorLine": "Line",
+  "indicatorReferenceValue": "Value",
+  "indicatorColor": "Color",
+  "indicatorPeriod": "Period",
+  "indicatorStdDevMultiplier": "Std dev multiplier",
+  "indicatorShortPeriod": "Short period",
+  "indicatorLongPeriod": "Long period",
+  "indicatorSignalPeriod": "Signal period",
+  "indicatorPeriodN": "Period N",
+  "indicatorSettingsTitle": "Indicator Settings",
+  "indicatorGroupMain": "Main chart",
+  "indicatorGroupSub": "Sub chart",
+  "indicatorMaDesc": "Moving average",
+  "indicatorEmaDesc": "Exponential moving average",
+  "indicatorBollDesc": "Bollinger bands",
+  "indicatorMacdDesc": "Moving average convergence divergence",
+  "indicatorKdjDesc": "Stochastic oscillator",
+  "indicatorRsiDesc": "Relative strength index",
+  "indicatorWrDesc": "Williams %R",
+  "proLockFeature": "Pro feature",
+  "themeSwitchToLight": "Switch to light theme",
+  "themeSwitchToDark": "Switch to dark theme"
+}

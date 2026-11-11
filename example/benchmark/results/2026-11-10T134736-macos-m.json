@@ -1,0 +1,54 @@
+{
+  "label": "macos-m",
+  "time": "2026-11-10T13:47:36.490423",
+  "meta": {
+    "os": "macos",
+    "osVersion": "Version 27.0.1 (Build 26A434)",
+    "bars": 10000,
+    "indicators": [
+      "ma(7,25,99)",
+      "ema(12,26)",
+      "boll(20,2.0)",
+      "vol",
+      "mavol(5,10)",
+      "macd(12,26,9)",
+      "kdj(9,3,3)",
+      "rsi(14)"
+    ],
+    "size": "Instance of 'Size'",
+    "dpr": 1.0
+  },
+  "pan": {
+    "average_frame_build_time_millis": 0.492,
+    "90th_percentile_frame_build_time_millis": 0.678,
+    "worst_frame_build_time_millis": 1.728,
+    "average_frame_rasterizer_time_millis": 0.503,
+    "90th_percentile_frame_rasterizer_time_millis": 0.445,
+    "worst_frame_rasterizer_time_millis": 60.083,
+    "missed_frame_build_budget_count": 0,
+    "missed_frame_rasterizer_budget_count": 2,
+    "frame_count": 941
+  },
+  "zoom": {
+    "average_frame_build_time_millis": 0.593,
+    "90th_percentile_frame_build_time_millis": 0.791,
+    "worst_frame_build_time_millis": 1.183,
+    "average_frame_rasterizer_time_millis": 0.504,
+    "90th_percentile_frame_rasterizer_time_millis": 0.651,
+    "worst_frame_rasterizer_time_millis": 1.443,
+    "missed_frame_build_budget_count": 0,
+    "missed_frame_rasterizer_budget_count": 0,
+    "frame_count": 479
+  },
+  "ticks": {
+    "average_frame_build_time_millis": 0.322,
+    "90th_percentile_frame_build_time_millis": 0.672,
+    "worst_frame_build_time_millis": 0.948,
+    "average_frame_rasterizer_time_millis": 0.365,
+    "90th_percentile_frame_rasterizer_time_millis": 0.43,
+    "worst_frame_rasterizer_time_millis": 2.906,
+    "missed_frame_build_budget_count": 0,
+    "missed_frame_rasterizer_budget_count": 0,
+    "frame_count": 600
+  }
+}
