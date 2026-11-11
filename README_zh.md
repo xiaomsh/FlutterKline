@@ -1,10 +1,20 @@
 # klinex
 
+[![](https://img.shields.io/pub/v/klinex.svg?color=blue)](https://pub.dev/packages/klinex)
+[![](https://img.shields.io/github/last-commit/xiaomsh/FlutterKline?color=yellow)](https://github.com/xiaomsh/FlutterKline)
+
 [English](README.md) | 中文
 
 纯 Flutter K 线图表库，零三方依赖。
 
 在线演示：<https://xiaomsh.github.io/FlutterKline/>，演示工程在 [example/](example/)。
+
+#### 导入方式
+
+```yaml
+dependencies:
+  klinex: ^0.0.1
+```
 
 ## 快速上手
 

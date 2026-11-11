@@ -1,7 +1,7 @@
 name: klinex
 description: A minimal, fast, plugin-based K-line (candlestick) chart for Flutter. Zero third-party dependencies.
 version: 0.0.1
-publish_to: none
+homepage: https://github.com/xiaomsh/FlutterKline
 
 environment:
   sdk: ^3.12.0

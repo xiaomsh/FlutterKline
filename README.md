@@ -1,10 +1,20 @@
 # klinex
 
+[![](https://img.shields.io/pub/v/klinex.svg?color=blue)](https://pub.dev/packages/klinex)
+[![](https://img.shields.io/github/last-commit/xiaomsh/FlutterKline?color=yellow)](https://github.com/xiaomsh/FlutterKline)
+
 English | [中文](README_zh.md)
 
 A pure Flutter candlestick (K-line) chart library with zero third-party dependencies.
 
 Live demo: <https://xiaomsh.github.io/FlutterKline/>. The demo app lives in [example/](example/).
+
+#### Installation
+
+```yaml
+dependencies:
+  klinex: ^0.0.1
+```
 
 ## Quick start
 
